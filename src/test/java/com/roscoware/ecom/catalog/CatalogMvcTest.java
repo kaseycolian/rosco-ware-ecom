@@ -1,5 +1,6 @@
 package com.roscoware.ecom.catalog;
 
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -29,6 +30,12 @@ public class CatalogMvcTest {
 
 	@Test
 	public void shouldRetrieveAnIndividualProduct() throws Exception {
-		mvc.perform(get("/products/30")).andExpect(status().isOk());
+		when(productRepo.findOne(42L)).thenReturn(new Product("some product"));
+		mvc.perform(get("/products/42")).andExpect(status().isOk());
+	}
+
+	@Test
+	public void shouldNotFindProductId() throws Exception {
+		mvc.perform(get("/products/42")).andExpect(status().isNotFound());
 	}
 }

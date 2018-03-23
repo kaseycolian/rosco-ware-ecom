@@ -15,6 +15,8 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.data.repository.CrudRepository;
 
+import com.roscoware.ecom.catalog.BrowseController.ProductNotFoundException;
+
 public class BrowseControllerTest {
 	@InjectMocks
 	private BrowseController underTest;
@@ -31,7 +33,7 @@ public class BrowseControllerTest {
 	@Test
 	public void shouldGetProducts() {
 		when(productRepo.findAll()).thenReturn(Collections.singleton(product));
-		Iterable<Product> result = underTest.getProducts();
+		Iterable<Product> result = underTest.findProducts();
 		assertThat(result, contains(any(Product.class)));
 
 	}
@@ -39,7 +41,7 @@ public class BrowseControllerTest {
 	@Test
 	public void shouldGetProductsFromDb() {
 		when(productRepo.findAll()).thenReturn(Collections.singleton(product));
-		Iterable<Product> result = underTest.getProducts();
+		Iterable<Product> result = underTest.findProducts();
 		assertThat(result, contains(product));
 
 	}
@@ -47,9 +49,15 @@ public class BrowseControllerTest {
 	@Test
 	public void shouldGetAnIndividualProductFromDb() {
 		when(productRepo.findOne(30L)).thenReturn(product);
-		Product result = underTest.getProduct(30L);
+		Product result = underTest.findProduct(30L);
 
 		assertThat(result, is(product));
 
+	}
+
+	@Test(expected = ProductNotFoundException.class)
+	public void shouldReturnNotFoundForBadProductId() {
+		long invalidProductId = 42L;
+		underTest.findProduct(invalidProductId);
 	}
 }
