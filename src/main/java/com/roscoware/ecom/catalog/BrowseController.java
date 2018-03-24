@@ -13,10 +13,17 @@ import org.springframework.web.bind.annotation.RestController;
 public class BrowseController {
 	@Resource
 	private ProductRepository productRepo;
+	@Resource
+	private CategoryRepository categoryRepo;
 
 	@RequestMapping("/products")
 	public Iterable<Product> findProducts() {
 		return productRepo.findAll();
+	}
+
+	public Iterable<Category> findCategories() {
+
+		return categoryRepo.findAll();
 	}
 
 	@RequestMapping("/products/{id}")
@@ -38,4 +45,5 @@ public class BrowseController {
 		private static final long serialVersionUID = 1390319315276294727L;
 
 	}
+
 }

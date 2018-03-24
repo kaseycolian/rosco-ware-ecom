@@ -22,7 +22,11 @@ public class BrowseControllerTest {
 	@Mock
 	private ProductRepository productRepo;
 	@Mock
+	private CategoryRepository categoryRepo;
+	@Mock
 	private Product product;
+	@Mock
+	private Category category;
 
 	@Before
 	public void setup() {
@@ -58,5 +62,12 @@ public class BrowseControllerTest {
 	public void shouldReturnNotFoundForBadProductId() {
 		long invalidProductId = 42L;
 		underTest.findProduct(invalidProductId);
+	}
+
+	@Test
+	public void shouldGetCategoriesFromDb() {
+		when(categoryRepo.findAll()).thenReturn(Collections.singleton(category));
+		Iterable<Category> result = underTest.findCategories();
+		assertThat(result, contains(category));
 	}
 }
