@@ -51,4 +51,20 @@ public class Category {
 	public String toString() {
 		return name + " | " + description;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null || getClass() != obj.getClass()) {
+			return false;
+		}
+		return id == ((Category) obj).id;
+	}
+
+	@Override
+	public int hashCode() {
+		return ((Long) id).hashCode();
+	}
 }

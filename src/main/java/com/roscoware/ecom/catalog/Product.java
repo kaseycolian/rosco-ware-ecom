@@ -1,8 +1,12 @@
 package com.roscoware.ecom.catalog;
 
+import java.util.Collection;
+import java.util.HashSet;
+import static java.util.Arrays.asList;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -21,6 +25,13 @@ public class Product {
 	@ManyToOne
 	private Category category;
 	private String imageUrl;
+	
+	@ManyToMany (mappedBy = "products")
+	private Collection<Cart> carts;
+	
+	public Collection<Cart> getCarts(){
+		return carts;
+	}
 
 	public Product(String name) {
 		this.name = name;
@@ -37,7 +48,7 @@ public class Product {
 		this.price = price;
 		this.category = category;
 		this.imageUrl = imageUrl;
-
+//		this.carts = new HashSet<>(asList(carts));
 	}
 
 	public String getImageUrl() {
