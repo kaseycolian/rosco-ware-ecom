@@ -2,6 +2,7 @@ package com.roscoware.ecom.catalog;
 
 import static java.util.Arrays.asList;
 
+import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -21,17 +22,25 @@ public class Cart {
 
 	@ManyToMany
 	private HashSet<Product> products;
+	
+	static final double DEFAULT_CARTBALANCE = 0.00;
+	protected double cartBalance = DEFAULT_CARTBALANCE;
 
-	public HashSet<Product> getProducts() {
-		return products;
-	}
-
-	public Cart(Product... products) {
+	public Cart(double cartBalance, Product... products) {
+		this.cartBalance = cartBalance;
 		this.products = new HashSet<Product>(asList(products));
 	}
 
 	public Long getId() {
 		return id;
+	}
+	
+	public double getCartBalance() {
+		return cartBalance;
+	}
+
+	public HashSet<Product> getProducts() {
+		return products;
 	}
 
 	public void addProductToCart(Product product) {
@@ -43,9 +52,9 @@ public class Cart {
 		products.remove(product);
 	}
 
-	public void getPriceTotalOfCart() {
-		for (products)
-	}
+//	public void getPriceTotalOfCart() {
+//		for (products)
+//	}
 
 	@SuppressWarnings("unused")
 	private Cart() {

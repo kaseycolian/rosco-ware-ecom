@@ -22,7 +22,7 @@ public class CartTest {
 	
 	Category testCategory = new Category("cat", "is cool");
 	Product product1 = new Product("", "", "", 1.00, testCategory, "");
-	Cart testCart = new Cart(product1);
+	Cart testCart = new Cart(1, product1);
 
 	// @Test
 	// public void shouldReturnProduct() {
@@ -39,10 +39,14 @@ public class CartTest {
 	// assertThat(product, is(testProduct));
 	//
 	// }
+	
+	@Test
+	public void shouldReturnCartBalance() {
+		assertThat(testCart.getCartBalance(), is(1.00));
+	}
 
 	@Test
 	public void shouldGetTotalOfOneItem() {
-		// product1.getPrice();
 		assertThat(product1.getPrice(), is(1.00));
 
 	}
