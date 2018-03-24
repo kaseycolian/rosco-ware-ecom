@@ -44,4 +44,15 @@ public class CatalogMvcTest {
 	public void shouldRetrieveCategories() throws Exception {
 		mvc.perform(get("/categories")).andExpect(status().isOk());
 	}
+
+	@Test
+	public void shouldRetrieveAnIndividualCategory() throws Exception {
+		when(categoryRepo.findOne(2L)).thenReturn(new Category("Some Category", "Category Description"));
+		mvc.perform(get("/categories/2")).andExpect(status().isOk());
+	}
+
+	@Test
+	public void shouldNotFindCategoryId() throws Exception {
+		mvc.perform(get("/categories/42")).andExpect(status().isNotFound());
+	}
 }

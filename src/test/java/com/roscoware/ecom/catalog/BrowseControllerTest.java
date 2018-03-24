@@ -14,7 +14,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.roscoware.ecom.catalog.BrowseController.ProductNotFoundException;
+import com.roscoware.ecom.catalog.BrowseController.SomethingNotFoundException;
 
 public class BrowseControllerTest {
 	@InjectMocks
@@ -58,7 +58,7 @@ public class BrowseControllerTest {
 
 	}
 
-	@Test(expected = ProductNotFoundException.class)
+	@Test(expected = SomethingNotFoundException.class)
 	public void shouldReturnNotFoundForBadProductId() {
 		long invalidProductId = 42L;
 		underTest.findProduct(invalidProductId);
@@ -69,5 +69,18 @@ public class BrowseControllerTest {
 		when(categoryRepo.findAll()).thenReturn(Collections.singleton(category));
 		Iterable<Category> result = underTest.findCategories();
 		assertThat(result, contains(category));
+	}
+
+	@Test
+	public void shouldGetAnIndividualCategoryFromDb() {
+		when(categoryRepo.findOne(30L)).thenReturn(category);
+		Category result = underTest.findCategory(30L);
+		assertThat(result, is(category));
+	}
+
+	@Test(expected = SomethingNotFoundException.class)
+	public void shouldReturnNotFoundForBadCategoryId() {
+		long invalidProductId = 42L;
+		underTest.findCategory(invalidProductId);
 	}
 }

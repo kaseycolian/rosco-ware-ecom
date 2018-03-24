@@ -33,11 +33,21 @@ public class BrowseController {
 		if (selectedProduct != null) {
 			return selectedProduct;
 		}
-		throw new ProductNotFoundException();
+		throw new SomethingNotFoundException();
+	}
+
+	@RequestMapping("/categories/{id}")
+	public Category findCategory(@PathVariable(name = "id") long id) {
+		Category selectedCategory = categoryRepo.findOne(id);
+		if (selectedCategory != null) {
+			return selectedCategory;
+		}
+		throw new SomethingNotFoundException();
+
 	}
 
 	@ResponseStatus(HttpStatus.NOT_FOUND)
-	public class ProductNotFoundException extends RuntimeException {
+	public class SomethingNotFoundException extends RuntimeException {
 
 		/**
 		 * I can honestly say I don't know what the following is for, review with
