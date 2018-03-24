@@ -31,5 +31,11 @@ public class BrowseController {
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	public class ProductNotFoundException extends RuntimeException {
 
+		/**
+		 * I can honestly say I don't know what the following is for, review with
+		 * instructors before Monday. -Ben
+		 */
+		private static final long serialVersionUID = 1390319315276294727L;
+
 	}
 }
