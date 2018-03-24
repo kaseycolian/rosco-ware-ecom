@@ -15,6 +15,7 @@ public class Product {
 	private String type;
 	private String description;
 	private double price;
+	
 	@ManyToOne
 	private Category category;
 
