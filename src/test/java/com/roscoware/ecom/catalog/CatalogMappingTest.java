@@ -46,8 +46,6 @@ public class CatalogMappingTest {
 	public void shouldSaveAndLoadACategoryFromDb() {
 
 		Long testId = testCategory.getId();
-		entityManager.flush();
-		entityManager.clear();
 		flushAndClear();
 		testCategory = categoryRepo.findOne(testId);
 		assertThat(testCategory.getName(), is("Category Name"));
