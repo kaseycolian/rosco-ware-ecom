@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Product {
 
@@ -15,9 +17,10 @@ public class Product {
 	private String type;
 	private String description;
 	private double price;
-	
+	@JsonIgnore
 	@ManyToOne
 	private Category category;
+	private String imageUrl;
 
 	public Product(String name) {
 		this.name = name;
@@ -27,13 +30,18 @@ public class Product {
 	private Product() {
 	}
 
-	public Product(String name, String type, String description, double price, Category category) {
+	public Product(String name, String type, String description, double price, Category category, String imageUrl) {
 		this.name = name;
 		this.type = type;
 		this.description = description;
 		this.price = price;
 		this.category = category;
+		this.imageUrl = imageUrl;
 
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
 	}
 
 	public String getType() {

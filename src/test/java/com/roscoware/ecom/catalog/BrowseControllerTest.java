@@ -13,7 +13,6 @@ import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.data.repository.CrudRepository;
 
 import com.roscoware.ecom.catalog.BrowseController.ProductNotFoundException;
 
@@ -21,7 +20,7 @@ public class BrowseControllerTest {
 	@InjectMocks
 	private BrowseController underTest;
 	@Mock
-	private CrudRepository<Product, Long> productRepo;
+	private ProductRepository productRepo;
 	@Mock
 	private Product product;
 
