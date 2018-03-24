@@ -21,6 +21,7 @@ public class BrowseController {
 		return productRepo.findAll();
 	}
 
+	@RequestMapping("/categories")
 	public Iterable<Category> findCategories() {
 
 		return categoryRepo.findAll();

@@ -21,6 +21,8 @@ public class CatalogMvcTest {
 	MockMvc mvc;
 	@MockBean
 	private ProductRepository productRepo;
+	@MockBean
+	private CategoryRepository categoryRepo;
 
 	@Test
 	public void shouldRetrieveProducts() throws Exception {
@@ -36,5 +38,10 @@ public class CatalogMvcTest {
 	@Test
 	public void shouldNotFindProductId() throws Exception {
 		mvc.perform(get("/products/42")).andExpect(status().isNotFound());
+	}
+
+	@Test
+	public void shouldRetrieveCategories() throws Exception {
+		mvc.perform(get("/categories")).andExpect(status().isOk());
 	}
 }
