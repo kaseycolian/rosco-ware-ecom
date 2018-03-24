@@ -10,7 +10,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -21,7 +20,7 @@ public class CatalogMvcTest {
 	@Resource
 	MockMvc mvc;
 	@MockBean
-	private CrudRepository<Product, Long> productRepo;
+	private ProductRepository productRepo;
 
 	@Test
 	public void shouldRetrieveProducts() throws Exception {

@@ -17,6 +17,7 @@ public class Product {
 	private double price;
 	@ManyToOne
 	private Category category;
+	private String imageUrl;
 
 	public Product(String name) {
 		this.name = name;
@@ -26,13 +27,18 @@ public class Product {
 	private Product() {
 	}
 
-	public Product(String name, String type, String description, double price, Category category) {
+	public Product(String name, String type, String description, double price, Category category, String imageUrl) {
 		this.name = name;
 		this.type = type;
 		this.description = description;
 		this.price = price;
 		this.category = category;
+		this.imageUrl = imageUrl;
 
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
 	}
 
 	public String getType() {
