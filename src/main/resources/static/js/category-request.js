@@ -5,5 +5,5 @@ xhr.onreadystatechange = function() {
 		console.log(res);
 	}
 }
-xhr.open('GET', '/categories/'+ category.id, true);
+xhr.open('GET', '/api/categories/'+ category.id, true);
 xhr.send();

@@ -19,5 +19,5 @@ xhr.onreadystatechange = function() {
 	}
 }
 
-xhr.open('GET', '/categories', true);
+xhr.open('GET', '/api/categories', true);
 xhr.send();
