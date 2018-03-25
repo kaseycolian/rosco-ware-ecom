@@ -21,6 +21,7 @@ public class CartItem {
 	// Many CartItems with One Product
 	@JsonIgnore
 	@ManyToOne
+	@JsonIgnore
 	private Product product;
 	private int quantityOfIndividualProduct;
 	@ManyToOne
