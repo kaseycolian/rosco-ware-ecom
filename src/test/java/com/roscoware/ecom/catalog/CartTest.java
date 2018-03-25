@@ -9,7 +9,6 @@ import org.junit.Test;
 
 public class CartTest {
 
-//Kasey is working on adding and removing items from the cart, then calculating the total price of cart.	
 	
 	@Resource
 	private CartRepository cartRepo;
@@ -21,40 +20,23 @@ public class CartTest {
 	private ProductRepository productRepo;
 	
 	Category testCategory = new Category("cat", "is cool");
-	Product product1 = new Product("", "", "", 1.00, testCategory, "");
+	Product product1 = new Product("", "", "", 2.00, testCategory, "");
+	Product product2 = new Product("", "", "", 3.00, testCategory, "");
 	Cart testCart = new Cart(1, product1);
 
-	// @Test
-	// public void shouldReturnProduct() {
-	// Category testCategory = new Category("chickpeas", "declicious");
-	// testCategory = categoryRepo.save(testCategory);
-	//
-	// Product testProduct = new Product("", "", "", 5, testCategory, "");
-	// testProduct = productRepo.save(testProduct);
-	// Cart underTest = new Cart(testProduct);
-	// underTest = cartRepo.save(underTest);
-	//
-	//// underTest.getProducts();
-	//
-	// assertThat(product, is(testProduct));
-	//
-	// }
 	
 	@Test
 	public void shouldReturnCartBalance() {
 		assertThat(testCart.getCartBalance(), is(1.00));
 	}
 
-	@Test
-	public void shouldGetTotalOfOneItem() {
-		assertThat(product1.getPrice(), is(1.00));
-
-	}
 	
-//	@Test 
-//	public void shouldGetTotalOfTwoItems() {
-//		assertThat(testCart.getTotal(), is (1.00));
-//		
+//	@Test
+//	public void shouldGetTotalNumberOfItemsInCart() {
+//		int originalQuantityOfProducts = testCart.getProducts().size();
+//		testCart.addProductToCart(product2);
+//		int updatedQuantityOfProducts = testCart.getProducts().size();
+//		assertThat(updatedQuantityOfProducts-originalQuantityOfProducts, is(1));
 //	}
 
 }
