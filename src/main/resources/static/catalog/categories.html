@@ -1,21 +1,37 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
 <html>
 <head>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/layout.css}" />
+
+
 	<title>Rosco Ware</title>
 </head>
 <body>
-	<h1>Shopping Categories</h1>
-		<div id="categories-container">This is where the categories will go
-			<div class= "category-container">
-    			<h2>
-    				<a href="accessory{id}">Accessories</a>
-    			</h2>
-    		</div>
-    	</div>
-
-
-	
-
-	<script src="../js/categories-request.js"></script>
-</body>
-</html>
+	<div class = "container">
+		<div class="header">
+   </div>
+   <div class="main-content">
+    <h1>Shopping Categories</h1>
+    <div id="categories-container">
+     <div class= "category-container">
+       <nav class = "nav-list">
+        <ul>
+        	<li><a href="#apparel">Apparel</a>
+            <li><a href="#treats">Treats</a>
+            <li><a href="#toys">Toys</a>
+            <li><a href="#collars-leashes">Collars & Leashes</a>
+        </ul>
+            </li>
+           </nav>
+         </div>
+       </div>
+     </div>
+     <div class="footer">
+     <img src="./images/paw-logo.jpg" width="30" height="30">
+      <img class="copyright">Copyright 2018 Rosco Ware</img>
+     </div>
+   </body>
+   </html>

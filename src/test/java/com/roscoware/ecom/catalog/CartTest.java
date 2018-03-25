@@ -3,8 +3,6 @@ package com.roscoware.ecom.catalog;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
-import javax.annotation.Resource;
-
 import org.junit.Test;
 
 public class CartTest {
@@ -20,6 +18,7 @@ public class CartTest {
 	}
 
 	@Test
+
 	public void shouldReturnCustomerName() {
 		assertThat(testCart.getCustomerName(), is("Mister Anderson"));
 	}
