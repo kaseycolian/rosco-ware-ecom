@@ -13,17 +13,20 @@ import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.data.repository.CrudRepository;
 
-import com.roscoware.ecom.catalog.BrowseController.ProductNotFoundException;
+import com.roscoware.ecom.catalog.BrowseController.SomethingNotFoundException;
 
 public class BrowseControllerTest {
 	@InjectMocks
 	private BrowseController underTest;
 	@Mock
-	private CrudRepository<Product, Long> productRepo;
+	private ProductRepository productRepo;
+	@Mock
+	private CategoryRepository categoryRepo;
 	@Mock
 	private Product product;
+	@Mock
+	private Category category;
 
 	@Before
 	public void setup() {
@@ -55,9 +58,29 @@ public class BrowseControllerTest {
 
 	}
 
-	@Test(expected = ProductNotFoundException.class)
+	@Test(expected = SomethingNotFoundException.class)
 	public void shouldReturnNotFoundForBadProductId() {
 		long invalidProductId = 42L;
 		underTest.findProduct(invalidProductId);
+	}
+
+	@Test
+	public void shouldGetCategoriesFromDb() {
+		when(categoryRepo.findAll()).thenReturn(Collections.singleton(category));
+		Iterable<Category> result = underTest.findCategories();
+		assertThat(result, contains(category));
+	}
+
+	@Test
+	public void shouldGetAnIndividualCategoryFromDb() {
+		when(categoryRepo.findOne(30L)).thenReturn(category);
+		Category result = underTest.findCategory(30L);
+		assertThat(result, is(category));
+	}
+
+	@Test(expected = SomethingNotFoundException.class)
+	public void shouldReturnNotFoundForBadCategoryId() {
+		long invalidProductId = 42L;
+		underTest.findCategory(invalidProductId);
 	}
 }

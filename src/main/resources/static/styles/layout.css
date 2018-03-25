@@ -1,0 +1,31 @@
+.categories-container{
+  display: grid;
+  grid-template-columns: 1 fr 2 fr;
+  grid-template-rows: auto auto;
+  
+  
+}
+.category-container{
+  display: grid;
+  grid-template-columns: 1 fr 2 fr;
+  grid-template-rows: auto auto;
+}
+
+
+.product-container{
+  display: grid;
+  grid-template-columns: 1 fr 2 fr;
+  grid-template-rows: auto auto;
+}
+.container{
+  display: grid; 
+  grid-template-row: auto, auto, auto;
+}
+.header{
+  display:grid;
+  grid-template-row: auto, auto, auto;
+}
+.main-content{
+  display: grid;
+  grid-template-row: 3fr 1fr;
+}
