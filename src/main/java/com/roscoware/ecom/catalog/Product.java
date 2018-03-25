@@ -20,13 +20,13 @@ public class Product {
 	private String type;
 	private String description;
 	private double price;
+	@JsonIgnore
 	@OneToMany(mappedBy = "product")
 	private Collection<CartItem> cartItems;
 	@JsonIgnore
 	@ManyToOne
 	private Category category;
 	private String imageUrl;
-
 
 	public Collection<CartItem> getCartItems() {
 		return cartItems;

@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 // One Product to Many CartItems
 
 // CartItem will have id, product, and int quantity
@@ -18,6 +20,7 @@ public class CartItem {
 	// One Product To Many CartItems
 	// Many CartItems with One Product
 	@ManyToOne
+	@JsonIgnore
 	private Product product;
 	private int quantityOfIndividualProduct;
 	@ManyToOne
