@@ -5,8 +5,8 @@ import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -15,21 +15,21 @@ public class Product {
 
 	@Id
 	@GeneratedValue
-	private long id;
+	private Long id;
 	private String name;
 	private String type;
 	private String description;
 	private double price;
+	@OneToMany(mappedBy = "product")
+	private Collection<CartItem> cartItems;
 	@JsonIgnore
 	@ManyToOne
 	private Category category;
 	private String imageUrl;
-	
-	@ManyToMany (mappedBy = "products")
-	private Collection<Cart> carts;
-	
-	public Collection<Cart> getCarts(){
-		return carts;
+
+
+	public Collection<CartItem> getCartItems() {
+		return cartItems;
 	}
 
 	public Product(String name) {
@@ -47,7 +47,6 @@ public class Product {
 		this.price = price;
 		this.category = category;
 		this.imageUrl = imageUrl;
-//		this.carts = new HashSet<>(asList(carts));
 	}
 
 	public String getImageUrl() {
@@ -70,7 +69,7 @@ public class Product {
 		return category;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
