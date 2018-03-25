@@ -11,7 +11,11 @@ public class CatalogPopulator implements CommandLineRunner {
 	private CategoryRepository categoryRepo;
 	@Resource
 	private ProductRepository productRepo;
+	@Resource
+	private CartItemRepository cartItemRepo;
 
+	// @Resource
+	// private CrudRepository<Cart, Long> cartRepo;
 	@Override
 	public void run(String... args) throws Exception {
 		Category clothing = new Category("Clothing", "Clothes for your beloved pets.");
@@ -32,7 +36,12 @@ public class CatalogPopulator implements CommandLineRunner {
 				8.75, accessories, "./images/sample1.jpg");
 		productRepo.save(roscoCollar);
 		productRepo.save(roscoLeash);
-
+		CartItem cartItem1 = new CartItem(roscoShorts, 3);
+		CartItem cartItem2 = new CartItem(roscoLeash, 2);
+		CartItem cartItem3 = new CartItem(roscoPants, 1);
+		cartItemRepo.save(cartItem1);
+		cartItemRepo.save(cartItem2);
+		cartItemRepo.save(cartItem3);
 	}
 
 }
