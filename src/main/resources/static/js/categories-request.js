@@ -5,12 +5,16 @@ xhr.onreadystatechange = function() {
 		const categoriesContainer = document.querySelector('#categories-container')
 		
 		for (let category of res) {
-			const categoryContainer = document.createElement('div')
-			const categoryLink = document.createElement('a')
+			const categoryContainer = document.createElement('div');
+			const categoryTitle = document.createElement('h2');
+			categoryTitle.classList.add('category-name');
+			const categoryLink = document.createElement('a');
+			categoryLink.classList.add('category-link');
 			categoryLink.setAttribute('href', '/catalog/category.html');
-			categoryLink.innerText = product.name
-			categoryContainer.appendChild(productLink)
-			categoriesContainer.appendChild(productContainer)
+			categoryLink.innerText = category.name;
+			categoryTitle.appendChild(categoryLink);
+			categoryContainer.appendChild(categoryTitle);
+			categoriesContainer.appendChild(categoryContainer);
 		}
 	}
 }
