@@ -1,11 +1,6 @@
 package com.roscoware.ecom.catalog;
 
-import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.containsInAnyOrder;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.hasEntry;
 import static org.hamcrest.Matchers.hasItems;
-import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 import javax.annotation.Resource;
@@ -55,55 +50,26 @@ public class CartMappingTest {
 
 		testCart = new Cart(product1, product2);
 		testCart = cartRepo.save(testCart);
-		
+
 		testCart2 = new Cart(product1);
 		testCart2 = cartRepo.save(testCart2);
 
 	}
 
-	// @Test
-	// public void shouldSaveAndLoadACartFromDbById() {
-
-	// Long underTest = testCart.getId();
-	//
-	// entityManager.flush();
-	// entityManager.clear();
-	//
-	// testCart = cartRepo.findOne(underTest);
-	//
-	// assertThat(testCart.getId(), is(underTest));
-	// }
-
-	// @Test
-	// public void
-
-	@Test
-	public void shouldSaveTwoProductsToOneCart() {
-
-		long testCartId = testCart.getId();
-
-		flushAndClear();
-
-		testCart = cartRepo.findOne(testCartId);
-
-		assertThat(testCart.getProducts(), containsInAnyOrder(product1, product2));
-
-	}
-
 	@Test
 	public void shouldSaveOneProductToTwoCarts() {
-//		long testCartId = testCart.getId();
+
 		long product1Id = product1.getId();
-		
+
 		flushAndClear();
-		
+
 		product1 = productRepo.findOne(product1Id);
-		
+
 		assertThat(product1.getCarts(), hasItems(testCart));
 		assertThat(product1.getCarts(), hasItems(testCart2));
-			
+
 	}
-	
+
 	public void flushAndClear() {
 		entityManager.flush();
 		entityManager.clear();
