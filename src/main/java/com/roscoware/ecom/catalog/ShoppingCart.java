@@ -1,17 +1,41 @@
 package com.roscoware.ecom.catalog;
 
+import static java.util.Arrays.asList;
+
+import java.util.Collection;
 import java.util.HashSet;
 
-public class ShoppingCart {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
-	private HashSet<CartItem> cartItems = new HashSet<>();
+@Entity
+public class ShoppingCart {
+	@Id
+	@GeneratedValue
+	private Long id;
+	@OneToMany(mappedBy = "shoppingCart")
+	private Collection<CartItem> cartItems;
 
 	public void addCartItem(CartItem cartItem) {
 		cartItems.add(cartItem);
 
 	}
 
-	public HashSet<CartItem> getCartItems() {
+	public ShoppingCart(CartItem... cartItems) {
+		this.cartItems = new HashSet<>(asList(cartItems));
+
+	}
+
+	private ShoppingCart() {
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public Collection<CartItem> getCartItems() {
 
 		return cartItems;
 	}
