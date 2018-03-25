@@ -20,8 +20,10 @@ public class Product {
 	private String type;
 	private String description;
 	private double price;
+	
 	@OneToMany(mappedBy = "product")
 	private Collection<CartItem> cartItems;
+	
 	@JsonIgnore
 	@ManyToOne
 	private Category category;

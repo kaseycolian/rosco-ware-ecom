@@ -68,6 +68,8 @@ public class CartItemMappingTest {
 		assertThat(product1.getCartItems(), hasItems(testCartItem2));
 
 	}
+	
+	//test to ensure you cannot add multiple products to one cartItem
 
 	public void flushAndClear() {
 		entityManager.flush();
