@@ -17,14 +17,14 @@ public class Cart {
 	}
 
 	public static double getDefaultCartbalance() {
-		return DEFAULT_CARTBALANCE;
+		return DEFAULT_CARTTOTAL;
 	}
 
-	static final double DEFAULT_CARTBALANCE = 0.00;
-	protected double cartBalance = DEFAULT_CARTBALANCE;
+	static final double DEFAULT_CARTTOTAL = 0.00;
+	protected double cartTotal = DEFAULT_CARTTOTAL;
 
 	public Cart(double cartTotal, String customerName) {
-		this.cartBalance = cartTotal;
+		this.cartTotal = cartTotal;
 		this.customerName = customerName;
 	}
 
@@ -33,7 +33,7 @@ public class Cart {
 	}
 
 	public double getCartTotal() {
-		return cartBalance;
+		return cartTotal;
 	}
 
 	// @SuppressWarnings("unused")
