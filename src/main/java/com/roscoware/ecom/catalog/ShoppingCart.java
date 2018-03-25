@@ -28,6 +28,7 @@ public class ShoppingCart {
 
 	}
 
+	@SuppressWarnings ("unused")
 	private ShoppingCart() {
 	}
 

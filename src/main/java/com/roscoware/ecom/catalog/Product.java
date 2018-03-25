@@ -20,11 +20,8 @@ public class Product {
 	private String type;
 	private String description;
 	private double price;
-<<<<<<< HEAD
-	
-=======
+
 	@JsonIgnore
->>>>>>> c624611d2e0277b8a2e9500d7556571447e8bb0d
 	@OneToMany(mappedBy = "product")
 	private Collection<CartItem> cartItems;
 	

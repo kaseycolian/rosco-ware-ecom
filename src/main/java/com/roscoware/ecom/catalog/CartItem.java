@@ -19,7 +19,6 @@ public class CartItem {
 
 	// One Product To Many CartItems
 	// Many CartItems with One Product
-	@JsonIgnore
 	@ManyToOne
 	@JsonIgnore
 	private Product product;

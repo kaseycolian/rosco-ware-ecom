@@ -27,8 +27,6 @@ public class CartItemMappingTest {
 
 	@Resource
 	private CartItemRepository cartItemRepo;
-	
-
 
 	private CartItem testCartItem1;
 	private CartItem testCartItem2;
@@ -68,8 +66,6 @@ public class CartItemMappingTest {
 		assertThat(product1.getCartItems(), hasItems(testCartItem2));
 
 	}
-	
-	//test to ensure you cannot add multiple products to one cartItem
 
 	public void flushAndClear() {
 		entityManager.flush();
