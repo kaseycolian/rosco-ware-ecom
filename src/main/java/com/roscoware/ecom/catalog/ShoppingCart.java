@@ -16,4 +16,16 @@ public class ShoppingCart {
 		return cartItems;
 	}
 
+	public void removeCartItem(CartItem cartItem1) {
+		cartItems.remove(cartItem1);
+	}
+
+	public double totalCartItems() {
+		double cartTotal = 0.0;
+		for (CartItem cartItem : cartItems) {
+			cartTotal += cartItem.getQuantityOfIndividualProduct() * cartItem.getProduct().getPrice();
+		}
+		return cartTotal;
+	}
+
 }
