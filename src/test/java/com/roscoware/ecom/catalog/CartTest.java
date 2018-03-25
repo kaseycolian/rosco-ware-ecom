@@ -13,7 +13,7 @@ public class CartTest {
 	Cart testCart = new Cart(1, "Mister Anderson");
 
 	@Test
-	public void shouldReturnCartBalance() {
+	public void shouldReturnDefaultCartBalance() {
 		assertThat(testCart.getCartTotal(), is(1.00));
 	}
 

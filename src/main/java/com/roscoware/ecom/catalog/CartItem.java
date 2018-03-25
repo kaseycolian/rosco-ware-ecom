@@ -15,16 +15,24 @@ public class CartItem {
 	@GeneratedValue
 	private Long id;
 
-	//One Product To Many CartItems
-	//Many CartItems with One Product
+	// One Product To Many CartItems
+	// Many CartItems with One Product
 	@ManyToOne
 	private Product product;
 	private int quantityOfIndividualProduct;
+	@ManyToOne
+	private ShoppingCart shoppingCart;
 
-	public CartItem(Product product, int quantityOfIndividualProduct) {
+	public CartItem(Product product, int quantityOfIndividualProduct, ShoppingCart cart) {
 		this.product = product;
 		this.quantityOfIndividualProduct = quantityOfIndividualProduct;
+		this.shoppingCart = cart;
 	}
+
+	public ShoppingCart getShoppingCart() {
+		return shoppingCart;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -36,9 +44,9 @@ public class CartItem {
 	public int getQuantityOfIndividualProduct() {
 		return quantityOfIndividualProduct;
 	}
-	
+
 	public CartItem() {
-		
+
 	}
 
 	@Override

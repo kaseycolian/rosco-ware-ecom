@@ -11,6 +11,10 @@ public class CatalogPopulator implements CommandLineRunner {
 	private CategoryRepository categoryRepo;
 	@Resource
 	private ProductRepository productRepo;
+	@Resource
+	private CartItemRepository cartItemRepo;
+	@Resource
+	private ShoppingCartRepository shoppingCartRepo;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -22,17 +26,24 @@ public class CatalogPopulator implements CommandLineRunner {
 				clothing, "./images/sample1.jpg");
 		Product roscoPants = new Product("Rosco Pants", "Pants", "This is the pants version of our shorts.", 4.50,
 				clothing, "./images/sample1.jpg");
-		productRepo.save(roscoShorts);
-		productRepo.save(roscoPants);
+		roscoShorts = productRepo.save(roscoShorts);
+		roscoPants = productRepo.save(roscoPants);
 
 		Product roscoCollar = new Product("Rosco Collar", "Collars",
 				"This is a bejeweled collar that bedazzles all the dogs around.", 12.50, accessories,
 				"./images/sample1.jpg");
 		Product roscoLeash = new Product("Rosco Leash", "Leashes", "A leash fit for a royal dog at a peasant price.",
 				8.75, accessories, "./images/sample1.jpg");
-		productRepo.save(roscoCollar);
-		productRepo.save(roscoLeash);
-
+		roscoCollar = productRepo.save(roscoCollar);
+		roscoLeash = productRepo.save(roscoLeash);
+		ShoppingCart cart = new ShoppingCart();
+		cart = shoppingCartRepo.save(cart);
+		CartItem cartItem1 = new CartItem(roscoShorts, 3, cart);
+		CartItem cartItem2 = new CartItem(roscoLeash, 2, cart);
+		CartItem cartItem3 = new CartItem(roscoPants, 1, cart);
+		cartItem1 = cartItemRepo.save(cartItem1);
+		cartItem2 = cartItemRepo.save(cartItem2);
+		cartItem3 = cartItemRepo.save(cartItem3);
 	}
 
 }
