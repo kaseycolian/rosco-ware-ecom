@@ -25,8 +25,13 @@ public class ShoppingCartController {
 	@RequestMapping("/shoppingCarts/{cartId}")
 	public ShoppingCart findShoppingCart(@PathVariable(name = "cartId") long cartId) {
 		ShoppingCart selectedCart = shoppingCartRepo.findOne(cartId);
-		
+
 		return selectedCart;
 	}
-		
+
+	@RequestMapping("/shoppingCarts")
+	public Iterable<ShoppingCart> findAllShoppingCarts() {
+		return shoppingCartRepo.findAll();
+	}
+
 }

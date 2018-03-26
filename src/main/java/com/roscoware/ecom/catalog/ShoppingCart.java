@@ -14,35 +14,33 @@ import javax.persistence.OneToMany;
 public class ShoppingCart {
 	@Id
 	@GeneratedValue
-	private Long id;
+	private long id;
 	@OneToMany(mappedBy = "shoppingCart")
 	private Collection<CartItem> cartItems;
+
+	public ShoppingCart(CartItem... cartItems) {
+		this.cartItems = new HashSet<>(asList(cartItems));
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public Collection<CartItem> getCartItems() {
+		return cartItems;
+	}
 
 	public void addCartItem(CartItem cartItem) {
 		cartItems.add(cartItem);
 
 	}
 
-	public ShoppingCart(CartItem... cartItems) {
-		this.cartItems = new HashSet<>(asList(cartItems));
-
-	}
-
-	@SuppressWarnings ("unused")
-	private ShoppingCart() {
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public Collection<CartItem> getCartItems() {
-
-		return cartItems;
-	}
-
 	public void removeCartItem(CartItem cartItem1) {
 		cartItems.remove(cartItem1);
+	}
+
+	@SuppressWarnings("unused")
+	private ShoppingCart() {
 	}
 
 	public double getTotalCostOfCartItems() {

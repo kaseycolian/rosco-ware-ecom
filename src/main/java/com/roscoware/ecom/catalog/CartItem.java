@@ -15,7 +15,7 @@ public class CartItem {
 
 	@Id
 	@GeneratedValue
-	private Long id;
+	private long id;
 
 	// One Product To Many CartItems
 	// Many CartItems with One Product
@@ -33,29 +33,29 @@ public class CartItem {
 		this.shoppingCart = cart;
 	}
 
-	public ShoppingCart getShoppingCart() {
-		return shoppingCart;
-	}
-
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
-	//added this to print in HTML:
-	public double getLineItemTotal() {
-		double lineItemTotal = quantityOfIndividualProduct * getProduct().getPrice();
-		return lineItemTotal;
-	}
-	
+
 	public Product getProduct() {
 		return product;
-	}
-	//added this
-	public String getProductName() {
-		return product.getName();
 	}
 
 	public int getQuantityOfIndividualProduct() {
 		return quantityOfIndividualProduct;
+	}
+
+	public ShoppingCart getShoppingCart() {
+		return shoppingCart;
+	}
+
+	public String getProductName() {
+		return product.getName();
+	}
+	
+	public double getLineItemTotal() {
+		double lineItemTotal = quantityOfIndividualProduct * getProduct().getPrice();
+		return lineItemTotal;
 	}
 
 	public CartItem() {
