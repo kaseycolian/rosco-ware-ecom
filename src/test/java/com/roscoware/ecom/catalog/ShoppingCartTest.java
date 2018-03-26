@@ -68,7 +68,7 @@ public class ShoppingCartTest {
 	public void shouldReturnTotalOfAllShoppingCartItemsTotalling475() {
 		// underTest.addCartItem(cartItem1);
 		// underTest.addCartItem(cartItem2);
-		double result = underTest.totalCartItems();
+		double result = underTest.getTotalCostOfCartItems();
 		assertEquals(result, 4.75, .001);
 
 	}
