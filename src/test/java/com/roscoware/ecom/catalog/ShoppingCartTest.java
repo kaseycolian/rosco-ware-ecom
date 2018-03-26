@@ -1,6 +1,13 @@
 package com.roscoware.ecom.catalog;
 
+import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.containsInAnyOrder;
+import static org.hamcrest.Matchers.hasItems;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+
+import java.util.Collection;
 
 import javax.annotation.Resource;
 
@@ -47,38 +54,43 @@ public class ShoppingCartTest {
 		cartItem3 = cartItemRepo.save(cartItem3);
 	}
 
-	// @Test
-	// public void shouldAddACartItem() {
-	// // underTest.addCartItem(cartItem1);
-	// Collection<CartItem> result = underTest.getCartItems();
-	// assertThat(result, hasItems(cartItem1));
-	//
-	// }
-	//
-	// @Test
-	// public void shouldAddTwoCartItemsAndRemoveTheFirstItemFromShoppingCart() {
-	// // underTest.addCartItem(cartItem1);
-	// underTest.addCartItem(cartItem2);
-	// underTest.removeCartItem(cartItem1);
-	// assertThat(underTest.getCartItems(), containsInAnyOrder(cartItem2));
-	//
-	// }
+	@Test
+	public void shouldReturnId() {
+		Long id = underTest.getId();
+		assertThat(id, is(0L));
+	}
+
+	@Test
+	public void shouldAddACartItem() {
+		underTest.addCartItem(cartItem1);
+		Collection<CartItem> result = underTest.getCartItems();
+		assertThat(result, hasItems(cartItem1));
+	}
+
+	@Test
+	public void shouldAddTwoCartItemsAndRemoveTheFirstItemFromShoppingCart() {
+		underTest.addCartItem(cartItem1);
+		underTest.addCartItem(cartItem2);
+		underTest.removeCartItem(cartItem1);
+		assertThat(underTest.getCartItems(), containsInAnyOrder(cartItem2));
+
+	}
 
 	@Test
 	public void shouldReturnTotalOfAllShoppingCartItemsTotalling475() {
-		// underTest.addCartItem(cartItem1);
-		// underTest.addCartItem(cartItem2);
+		underTest.addCartItem(cartItem1);
+		underTest.addCartItem(cartItem2);
 		double result = underTest.getTotalCostOfCartItems();
 		assertEquals(result, 4.75, .001);
 
 	}
 
-	// @Test
-	// public void shouldReturnTotalOfAllShoppingCartItemTotalling525() {
-	// underTest.addCartItem(cartItem2);
-	// underTest.addCartItem(cartItem3);
-	// double result = underTest.totalCartItems();
-	// assertEquals(result, 5.25, .001);
+	@Test
+	public void shouldReturnTotalOfAllShoppingCartItemTotalling525() {
+		underTest.addCartItem(cartItem2);
+		underTest.addCartItem(cartItem3);
+		double result = underTest.getTotalCostOfCartItems();
+		assertEquals(result, 5.25, .001);
 
-	// }
+	}
 }

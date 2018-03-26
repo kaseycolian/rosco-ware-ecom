@@ -1,7 +1,5 @@
 package com.roscoware.ecom.catalog;
 
-import static org.junit.Assert.assertEquals;
-
 import javax.annotation.Resource;
 
 import org.junit.Before;
@@ -12,7 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @DataJpaTest
-public class ShoppingCartTest {
+public class ShoppingCartMappingTest {
 	@Resource
 	private CategoryRepository categoryRepo;
 	@Resource
@@ -47,38 +45,9 @@ public class ShoppingCartTest {
 		cartItem3 = cartItemRepo.save(cartItem3);
 	}
 
-	// @Test
-	// public void shouldAddACartItem() {
-	// // underTest.addCartItem(cartItem1);
-	// Collection<CartItem> result = underTest.getCartItems();
-	// assertThat(result, hasItems(cartItem1));
-	//
-	// }
-	//
-	// @Test
-	// public void shouldAddTwoCartItemsAndRemoveTheFirstItemFromShoppingCart() {
-	// // underTest.addCartItem(cartItem1);
-	// underTest.addCartItem(cartItem2);
-	// underTest.removeCartItem(cartItem1);
-	// assertThat(underTest.getCartItems(), containsInAnyOrder(cartItem2));
-	//
-	// }
-
 	@Test
-	public void shouldReturnTotalOfAllShoppingCartItemsTotalling475() {
-		// underTest.addCartItem(cartItem1);
-		// underTest.addCartItem(cartItem2);
-		double result = underTest.totalCartItems();
-		assertEquals(result, 4.75, .001);
+	public void shouldSaveOneShoppingCartWithManyCartItems() {
 
 	}
 
-	// @Test
-	// public void shouldReturnTotalOfAllShoppingCartItemTotalling525() {
-	// underTest.addCartItem(cartItem2);
-	// underTest.addCartItem(cartItem3);
-	// double result = underTest.totalCartItems();
-	// assertEquals(result, 5.25, .001);
-
-	// }
 }

@@ -29,9 +29,9 @@ public class ShoppingCartController {
 		return selectedCart;
 	}
 
-	@RequestMapping("/add-to-shoppingCart/{cartId}")
-	public void addToShoppingCart(@PathVariable(name = "cartId") long cartId) {
-
+	@RequestMapping("/shoppingCarts")
+	public Iterable<ShoppingCart> findAllShoppingCarts() {
+		return shoppingCartRepo.findAll();
 	}
 
 }
