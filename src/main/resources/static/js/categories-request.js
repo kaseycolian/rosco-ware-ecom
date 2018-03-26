@@ -10,7 +10,7 @@ xhr.onreadystatechange = function() {
 			categoryTitle.classList.add('category-name');
 			const categoryLink = document.createElement('a');
 			categoryLink.classList.add('category-link');
-			categoryLink.setAttribute('href', '/catalog/category.html');
+			categoryLink.setAttribute('href', '/catalog/category?id='+category.id);
 			categoryLink.innerText = category.name;
 			categoryTitle.appendChild(categoryLink);
 			categoryContainer.appendChild(categoryTitle);

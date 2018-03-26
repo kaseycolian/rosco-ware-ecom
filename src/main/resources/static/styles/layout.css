@@ -18,17 +18,23 @@
 .cofoundercontainer p{
 	grid-column: 2/3;
 	grid-row: 2/3;
+	font-size: large;
+	
 }
 .cofoundercontainer img{
 	grid-column: 1/2;
 	grid-row: 2/3;
+	
 }
+
+
 .cofoundercontainer h1{
 	display:flex;
 	justify-content: center;
 	align-content: center;
 	grid-column: 1/3;
 	grid-row: 1/2;
+	
 }
 
 

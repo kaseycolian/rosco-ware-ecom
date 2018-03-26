@@ -1,3 +1,4 @@
+
 package com.roscoware.ecom.catalog;
 
 import static org.hamcrest.Matchers.hasItems;
@@ -73,3 +74,4 @@ public class CartItemMappingTest {
 	}
 
 }
+
