@@ -14,12 +14,12 @@ xhr.send();
 
 const xhr2 = new XMLHttpRequest();
 xhr2.onreadystatechange = function() {
-	if (xhr.readyState === 4 && xhr.status === 200) {
-		const res = JSON.parse(xhr.responseText);
+	if (xhr2.readyState === 4 && xhr2.status === 200) {
+		const res = JSON.parse(xhr2.responseText);
 		const shoppingCartContainer=document.querySelector('#shopping-cart-container');
-		const cartItems = res._embedded.cartItems
+		const cartItems = res._embedded.cartItems;
 		for (let cartItem of cartItems){
-			createShoppingCartContainer(cartItem, shoppingCartContainer);
+			populateShoppingCartContainer(cartItem, shoppingCartContainer);
 		}
 	}
 }
@@ -28,7 +28,29 @@ xhr2.send();
 
 
 
-const createShoppingCartContainer = (cart, container) =>{}
+const populateShoppingCartContainer = (cartItem, container) =>{
+	const shoppingCartItem = document.createElement('div');
+	shoppingCartItem.classList.add('shopping-cart-item');
+	const cartItemName = document.createElement('div');
+	cartItemName.classList.add('cart-item-name');
+	const cartItemNameText = document.createElement('h4');
+	cartItemNameText.innerText=cartItem.productName;
+	cartItemName.appendChild(cartItemNameText);
+	shoppingCartItem.appendChild(cartItemName);
+	cartItemQuantity= document.createElement('div');
+	cartItemQuantity.classList.add('cart-item-quantity');
+	cartItemQuantityAmount=document.createElement('p');
+	cartItemQuantityAmount.innerText=cartItem.quantityOfIndividualProduct;
+	cartItemQuantity.appendChild(cartItemQuantityAmount);
+	shoppingCartItem.appendChild(cartItemQuantity);
+	cartItemTotal = document.createElement('div');
+	cartItemTotal.classList.add('cart-item-total');
+	cartItemTotalAmount = document.createElement('p');
+	cartItemTotalAmount.innerText=cartItem.lineItemTotal;
+	cartItemTotal.appendChild(cartItemTotalAmount);
+	shoppingCartItem.appendChild(cartItemTotal);
+	container.appendChild(shoppingCartItem);
+}
 
 	
 const createProductContainer = (product, container) => {
