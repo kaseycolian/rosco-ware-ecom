@@ -39,9 +39,18 @@ public class CartItem {
 	public Long getId() {
 		return id;
 	}
-
+	//added this to print in HTML:
+	public double getLineItemTotal() {
+		double lineItemTotal = quantityOfIndividualProduct * getProduct().getPrice();
+		return lineItemTotal;
+	}
+	
 	public Product getProduct() {
 		return product;
+	}
+	//added this
+	public String getProductName() {
+		return product.getName();
 	}
 
 	public int getQuantityOfIndividualProduct() {
