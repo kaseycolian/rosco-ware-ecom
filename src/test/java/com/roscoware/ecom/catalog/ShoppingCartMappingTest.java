@@ -1,7 +1,5 @@
 package com.roscoware.ecom.catalog;
 
-import static org.junit.Assert.assertEquals;
-
 import javax.annotation.Resource;
 
 import org.junit.Before;

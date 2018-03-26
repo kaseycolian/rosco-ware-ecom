@@ -2,6 +2,7 @@ package com.roscoware.ecom.catalog;
 
 import static org.hamcrest.Matchers.any;
 import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.when;
 
@@ -15,8 +16,6 @@ import org.mockito.MockitoAnnotations;
 
 public class ShoppingCartControllerTest {
 
-	Long cartId = 42L;
-	
 	@InjectMocks
 	private ShoppingCartController underTest;
 	@Mock
@@ -25,6 +24,8 @@ public class ShoppingCartControllerTest {
 	private CategoryRepository categoryRepo;
 	@Mock
 	private CartItemRepository cartItemRepo;
+	@Mock
+	private ShoppingCartRepository shoppingCartRepo;
 	@Mock
 	private Product product;
 	@Mock
@@ -40,11 +41,18 @@ public class ShoppingCartControllerTest {
 	}
 
 	@Test
-	public void shouldGetCartITems() {
-		when(cartItemRepo.findAll()).thenReturn(Collections.singleton(cartItem));
-		Iterable<CartItem> result = underTest.findShoppingCart(0);
-		assertThat(result, contains(cartItem));
+	public void shouldRetrieveOneShoppingCartContents() {
+		when(shoppingCartRepo.findOne(42L)).thenReturn(shoppingCart);
+		ShoppingCart result = underTest.findShoppingCart(42L);
+		assertThat(result, is(shoppingCart));
 
+	}
+
+	@Test
+	public void shouldRetrieveAllShoppingCartContents() {
+		when(shoppingCartRepo.findAll()).thenReturn(Collections.singleton(shoppingCart));
+		Iterable<ShoppingCart> result = underTest.findAllShoppingCarts();
+		assertThat(result, contains(any(ShoppingCart.class)));
 	}
 
 }
