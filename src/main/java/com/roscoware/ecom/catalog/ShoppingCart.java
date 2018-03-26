@@ -38,7 +38,23 @@ public class ShoppingCart {
 	public void removeCartItem(CartItem cartItem1) {
 		cartItems.remove(cartItem1);
 	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null || getClass() != obj.getClass()) {
+			return false;
+		}
+		return id == ((ShoppingCart) obj).id;
+	}
 
+	@Override
+	public int hashCode() {
+		return ((Long) id).hashCode();
+	}
+
+	
 	@SuppressWarnings("unused")
 	private ShoppingCart() {
 	}
