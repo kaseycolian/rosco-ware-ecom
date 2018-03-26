@@ -15,7 +15,7 @@ public class CartItem {
 
 	@Id
 	@GeneratedValue
-	private Long id;
+	private long id;
 
 	// One Product To Many CartItems
 	// Many CartItems with One Product
@@ -37,7 +37,7 @@ public class CartItem {
 		return shoppingCart;
 	}
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 	//added this to print in HTML:
@@ -49,7 +49,7 @@ public class CartItem {
 	public Product getProduct() {
 		return product;
 	}
-	//added this
+
 	public String getProductName() {
 		return product.getName();
 	}

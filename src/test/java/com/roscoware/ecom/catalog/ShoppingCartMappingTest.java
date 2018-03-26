@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @DataJpaTest
-public class ShoppingCartTest {
+public class ShoppingCartMappingTest {
 	@Resource
 	private CategoryRepository categoryRepo;
 	@Resource
@@ -68,7 +68,7 @@ public class ShoppingCartTest {
 	public void shouldReturnTotalOfAllShoppingCartItemsTotalling475() {
 		// underTest.addCartItem(cartItem1);
 		// underTest.addCartItem(cartItem2);
-		double result = underTest.totalCartItems();
+		double result = underTest.getTotalCostOfCartItems();
 		assertEquals(result, 4.75, .001);
 
 	}

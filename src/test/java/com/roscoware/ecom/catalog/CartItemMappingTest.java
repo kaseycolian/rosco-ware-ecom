@@ -28,12 +28,16 @@ public class CartItemMappingTest {
 
 	@Resource
 	private CartItemRepository cartItemRepo;
+	
+	@Resource
+	private ShoppingCartRepository shoppingCartRepo;
 
 	private CartItem testCartItem1;
 	private CartItem testCartItem2;
 	private Category testCategory;
 	private Product product1;
 	private Product product2;
+	private ShoppingCart testCart;
 
 	@Before
 	public void setup() {
@@ -45,11 +49,14 @@ public class CartItemMappingTest {
 		product1 = productRepo.save(product1);
 		product2 = new Product("", "", "", 4, testCategory, "");
 		product2 = productRepo.save(product2);
-
-		testCartItem1 = new CartItem(product1, 5);
+		
+		testCart = new ShoppingCart();
+		testCart = shoppingCartRepo.save(testCart);
+		
+		testCartItem1 = new CartItem(product1, 5, testCart);
 		testCartItem1 = cartItemRepo.save(testCartItem1);
 
-		testCartItem2 = new CartItem(product1, 2);
+		testCartItem2 = new CartItem(product1, 2, testCart);
 		testCartItem2 = cartItemRepo.save(testCartItem2);
 
 	}
