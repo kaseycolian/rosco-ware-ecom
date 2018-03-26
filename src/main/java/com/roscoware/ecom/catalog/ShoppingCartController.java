@@ -29,11 +29,4 @@ public class ShoppingCartController {
 		return selectedCart;
 	}
 	
-	@RequestMapping("/meow/{cartId}")
-	public Iterable<CartItem> findShoppingCartLines(@PathVariable(name = "cartId") long cartId){
-		ShoppingCart selectedCart = shoppingCartRepo.findOne(cartId);
-		return selectedCart.getCartItems();
-	}
-	
-
 }

@@ -24,6 +24,7 @@ public class CartItem {
 	private Product product;
 	private int quantityOfIndividualProduct;
 	@ManyToOne
+	@JsonIgnore
 	private ShoppingCart shoppingCart;
 
 	public CartItem(Product product, int quantityOfIndividualProduct, ShoppingCart cart) {

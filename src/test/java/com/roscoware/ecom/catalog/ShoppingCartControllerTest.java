@@ -38,7 +38,7 @@ public class ShoppingCartControllerTest {
 	@Test
 	public void shouldGetCartITems() {
 		when(cartItemRepo.findAll()).thenReturn(Collections.singleton(cartItem));
-		Iterable<CartItem> result = underTest.findCartItems();
+		Iterable<CartItem> result = underTest.findShoppingCartLines(1);
 		assertThat(result, contains(any(CartItem.class)));	
 		
 	}
