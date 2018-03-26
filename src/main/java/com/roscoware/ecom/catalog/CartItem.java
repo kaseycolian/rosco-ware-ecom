@@ -62,6 +62,11 @@ public class CartItem {
 	}
 
 	@Override
+	public String toString() {
+		return product.getName() + ":" + quantityOfIndividualProduct;
+	}
+
+	@Override
 	public int hashCode() {
 		return ((Long) id).hashCode();
 	}
