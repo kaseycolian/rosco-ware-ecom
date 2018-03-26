@@ -46,6 +46,11 @@ public class ShoppingCartMappingTest {
 		cartItem3 = new CartItem(product3, 2, underTest);
 		cartItem3 = cartItemRepo.save(cartItem3);
 	}
+	@Test
+	public void shouldSaveOneShoppingCartWithManyCartItems() {
+		
+	}
+	
 
 	// @Test
 	// public void shouldAddACartItem() {
