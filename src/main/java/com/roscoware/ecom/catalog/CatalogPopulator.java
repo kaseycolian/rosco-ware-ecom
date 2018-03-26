@@ -38,12 +38,16 @@ public class CatalogPopulator implements CommandLineRunner {
 		roscoLeash = productRepo.save(roscoLeash);
 		ShoppingCart cart = new ShoppingCart();
 		cart = shoppingCartRepo.save(cart);
+		ShoppingCart cart2 = new ShoppingCart();
+		cart2 = shoppingCartRepo.save(cart2);
 		CartItem cartItem1 = new CartItem(roscoShorts, 3, cart);
 		CartItem cartItem2 = new CartItem(roscoLeash, 2, cart);
 		CartItem cartItem3 = new CartItem(roscoPants, 1, cart);
 		cartItem1 = cartItemRepo.save(cartItem1);
 		cartItem2 = cartItemRepo.save(cartItem2);
 		cartItem3 = cartItemRepo.save(cartItem3);
+		CartItem cartItem4 = new CartItem(roscoShorts, 2, cart2);
+		cartItem4 = cartItemRepo.save(cartItem4);
 	}
 
 }
