@@ -45,7 +45,7 @@ public class ShoppingCart {
 		cartItems.remove(cartItem1);
 	}
 
-	public double totalCartItems() {
+	public double getTotalCostOfCartItems() {
 		double cartTotal = 0.0;
 		for (CartItem cartItem : cartItems) {
 			cartTotal += cartItem.getQuantityOfIndividualProduct() * cartItem.getProduct().getPrice();

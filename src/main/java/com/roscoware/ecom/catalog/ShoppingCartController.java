@@ -23,8 +23,8 @@ public class ShoppingCartController {
 	private CategoryRepository categoryRepo;
 
 	@RequestMapping("/shoppingCarts/{cartId}")
-	public Iterable<CartItem> findShoppingCart(@PathVariable(name = "cartId") long cartId) {
-		return shoppingCartRepo.findOne(cartId).getCartItems();
+	public ShoppingCart findShoppingCart(@PathVariable(name = "cartId") long cartId) {
+		return shoppingCartRepo.findOne(cartId);
 	}
 
 }
