@@ -5,6 +5,7 @@
   
   
 }
+
 .category-container{
   display: grid;
   grid-template-columns: 1 fr 2 fr;
@@ -54,4 +55,12 @@
 .main-content{
   display: grid;
   grid-template-row: 3fr 1fr;
+}
+.main-category-container{
+  display:grid;
+  grid-template-rows: 100px auto 100px;
+}
+.main-view-container{
+  display:grid;
+  grid-template-columns: 3fr 1fr;
 }
