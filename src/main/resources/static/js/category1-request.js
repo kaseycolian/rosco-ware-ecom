@@ -29,7 +29,7 @@ xhr2.send();
 
 
 const createShoppingCartContainer = (cart, container) =>{}
-}
+
 	
 const createProductContainer = (product, container) => {
 	const productContainer = document.createElement('div');
