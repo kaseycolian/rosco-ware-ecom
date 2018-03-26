@@ -24,7 +24,9 @@ public class ShoppingCartController {
 
 	@RequestMapping("/shoppingCarts/{cartId}")
 	public ShoppingCart findShoppingCart(@PathVariable(name = "cartId") long cartId) {
-		return shoppingCartRepo.findOne(cartId);
+		ShoppingCart selectedCart = shoppingCartRepo.findOne(cartId);
+		
+		return selectedCart;
 	}
-
+	
 }
