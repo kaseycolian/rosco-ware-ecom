@@ -36,3 +36,34 @@ li a:hover {
     right: 0px;
 }
 
+.product-container img {
+  width: 200px;
+}
+.product-container {
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  grid-template-rows: auto auto;
+
+  background-color:antiquewhite;
+}
+.product-name{
+  grid-column: 1/2;
+  grid-row: 1/2;
+  
+}
+.product-price{
+  grid-column: 2/3;
+  grid-row:1/2;
+}
+.product-order-form-container{
+  grid-column:3/4;
+  grid-row:1/2;
+}
+.product-description{
+  grid-column:1/2;
+  grid-row:2/3;
+}
+.product-image{
+  grid-column: 2/-1;
+  grid-row:2/3;
+}
