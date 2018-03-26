@@ -72,6 +72,7 @@ header h1 {
 	grid-template-columns: 2fr 1fr 1fr;
 	grid-template-rows: auto auto;
 	background-color: rgba(0, 0, 0, .2);
+	
 }
 
 .product-name {
@@ -88,6 +89,7 @@ header h1 {
 .product-order-form-container {
 	grid-column: 3/4;
 	grid-row: 1/2;
+	
 }
 
 .product-description {

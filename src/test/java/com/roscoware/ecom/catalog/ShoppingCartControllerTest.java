@@ -13,8 +13,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-
 public class ShoppingCartControllerTest {
+
+	Long cartId = 42L;
 	
 	@InjectMocks
 	private ShoppingCartController underTest;
@@ -30,17 +31,20 @@ public class ShoppingCartControllerTest {
 	private Category category;
 	@Mock
 	private CartItem cartItem;
+	@Mock
+	private ShoppingCart shoppingCart;
+
 	@Before
 	public void setup() {
 		MockitoAnnotations.initMocks(this);
 	}
-	
+
 	@Test
 	public void shouldGetCartITems() {
 		when(cartItemRepo.findAll()).thenReturn(Collections.singleton(cartItem));
-		Iterable<CartItem> result = underTest.findShoppingCart(1);
-		assertThat(result, contains(any(CartItem.class)));	
-		
+		Iterable<CartItem> result = underTest.findShoppingCart(0);
+		assertThat(result, contains(cartItem));
+
 	}
 
 }
