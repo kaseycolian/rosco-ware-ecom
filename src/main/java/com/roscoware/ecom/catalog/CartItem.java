@@ -33,29 +33,29 @@ public class CartItem {
 		this.shoppingCart = cart;
 	}
 
-	public ShoppingCart getShoppingCart() {
-		return shoppingCart;
-	}
-
 	public long getId() {
 		return id;
 	}
-	//added this to print in HTML:
-	public double getLineItemTotal() {
-		double lineItemTotal = quantityOfIndividualProduct * getProduct().getPrice();
-		return lineItemTotal;
-	}
-	
+
 	public Product getProduct() {
 		return product;
+	}
+
+	public int getQuantityOfIndividualProduct() {
+		return quantityOfIndividualProduct;
+	}
+
+	public ShoppingCart getShoppingCart() {
+		return shoppingCart;
 	}
 
 	public String getProductName() {
 		return product.getName();
 	}
-
-	public int getQuantityOfIndividualProduct() {
-		return quantityOfIndividualProduct;
+	
+	public double getLineItemTotal() {
+		double lineItemTotal = quantityOfIndividualProduct * getProduct().getPrice();
+		return lineItemTotal;
 	}
 
 	public CartItem() {

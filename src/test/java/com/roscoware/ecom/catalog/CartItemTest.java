@@ -1,7 +1,6 @@
 package com.roscoware.ecom.catalog;
 
-import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.hasItems;
+import static org.junit.Assert.assertEquals;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -15,27 +14,38 @@ public class CartItemTest {
 	CartItem underTest = new CartItem(testProduct, 2, testCart);
 
 	@Test
-	public void shouldReturnQuantityOfIndividualProdudct() {
-		int itemQuantity =  underTest.getQuantityOfIndividualProduct();
-		assertThat(itemQuantity, is(2));
-	}
-	
-	@Test
 	public void shoudldReturnId() {
 		Long id = underTest.getId();
 		assertThat(id, is(0L));
-		
 	}
-	
+
 	@Test
 	public void shouldReturnProduct() {
 		Product product = underTest.getProduct();
 		assertThat(product, is(testProduct));
 	}
-	
-	@Test 
+
+	@Test
+	public void shouldReturnQuantityOfIndividualProduct() {
+		int itemQuantity = underTest.getQuantityOfIndividualProduct();
+		assertThat(itemQuantity, is(2));
+	}
+
+	@Test
+	public void shouldReturnShoppingCart() {
+		ShoppingCart cart = underTest.getShoppingCart();
+		assertThat(cart, is(cart));
+	}
+
+	@Test
 	public void shouldReturnProductName() {
 		String productName = underTest.getProductName();
 		assertThat(productName, is("cat"));
+	}
+
+	@Test
+	public void shouldGetLineItemTotal() {
+		double itemTotal = underTest.getLineItemTotal();
+		assertEquals(itemTotal, 10, 001);
 	}
 }
