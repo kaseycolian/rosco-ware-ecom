@@ -21,6 +21,17 @@ xhr2.onreadystatechange = function() {
 		for (let cartItem of cartItems){
 			populateShoppingCartContainer(cartItem, shoppingCartContainer);
 		}
+		let cartGrandTotal = 0.0;
+		for (let cartItem of cartItems){
+			cartGrandTotal += cartItem.lineItemTotal;
+		}
+		const cartGrandTotalContainer = document.createElement('div');
+		cartGrandTotalContainer.classList.add('cart-grand-total');
+		cartGrandTotalAmount=document.createElement('p');
+		cartGrandTotalAmount.innerText="You're cart total is: $" + cartGrandTotal;
+		cartGrandTotalContainer.appendChild(cartGrandTotalAmount);
+		shoppingCartContainer.appendChild(cartGrandTotalContainer);
+
 	}
 }
 xhr2.open('GET','/shoppingCarts/1/cartItems', true);
