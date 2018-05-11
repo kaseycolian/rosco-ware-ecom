@@ -1,11 +1,13 @@
 package com.roscoware.ecom.catalog;
 
-import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.hasItems;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
+import static org.hamcrest.core.IsNot.not;
+import static org.hamcrest.Matchers.hasItem;
+
 
 import java.util.Collection;
 
@@ -92,5 +94,13 @@ public class ShoppingCartTest {
 		double result = underTest.getTotalCostOfCartItems();
 		assertEquals(result, 5.25, .001);
 
+	}
+	@Test
+	public void shouldDeleteOneCartItem() {
+		underTest.addCartItem(cartItem1);
+		underTest.addCartItem(cartItem2);
+		underTest.removeCartItem(cartItem1);
+		Collection<CartItem> result = underTest.getCartItems();
+		assertThat(result, not(hasItem(cartItem1)));
 	}
 }
