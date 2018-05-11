@@ -68,6 +68,13 @@ public class ShoppingCartTest {
 		Collection<CartItem> result = underTest.getCartItems();
 		assertThat(result, hasItems(cartItem1));
 	}
+	@Test
+	public void shouldAddTwoCartItems() {
+		underTest.addCartItem(cartItem1);
+		underTest.addCartItem(cartItem2);
+		Collection<CartItem> result = underTest.getCartItems();
+		assertThat(result, hasItems(cartItem1, cartItem2));
+	}
 
 	@Test
 	public void shouldAddTwoCartItemsAndRemoveTheFirstItemFromShoppingCart() {
@@ -75,7 +82,6 @@ public class ShoppingCartTest {
 		underTest.addCartItem(cartItem2);
 		underTest.removeCartItem(cartItem1);
 		assertThat(underTest.getCartItems(), containsInAnyOrder(cartItem2));
-
 	}
 
 	@Test
@@ -84,7 +90,6 @@ public class ShoppingCartTest {
 		underTest.addCartItem(cartItem2);
 		double result = underTest.getTotalCostOfCartItems();
 		assertEquals(result, 4.75, .001);
-
 	}
 
 	@Test
@@ -93,14 +98,23 @@ public class ShoppingCartTest {
 		underTest.addCartItem(cartItem3);
 		double result = underTest.getTotalCostOfCartItems();
 		assertEquals(result, 5.25, .001);
-
 	}
+	
 	@Test
 	public void shouldDeleteOneCartItem() {
 		underTest.addCartItem(cartItem1);
-		underTest.addCartItem(cartItem2);
 		underTest.removeCartItem(cartItem1);
 		Collection<CartItem> result = underTest.getCartItems();
 		assertThat(result, not(hasItem(cartItem1)));
+	}
+	
+	@Test
+	public void shouldDeleteTwoCartItems() {
+		underTest.addCartItem(cartItem1);
+		underTest.addCartItem(cartItem2);
+		underTest.removeCartItem(cartItem1);
+		underTest.removeCartItem(cartItem2);
+		Collection<CartItem> result = underTest.getCartItems();
+		assertThat(result, not(hasItems(cartItem1, cartItem2)));
 	}
 }
